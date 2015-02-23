@@ -1,0 +1,30 @@
+CTR Prediction for Avazu
+
+Crossval on day 30, Train on rest
+---------------------------------------------------------------------------
+Trying to optimize -l2
+Executing Command
+
+vw-hypersearch -t train30.vw -L 1e-10 20 vw --loss_function logistic --link logistic  -b 24 -c train.vw --quiet --passes 1  -l 0.132217 --l2 % -f vwhyperlogi1
+Trying to optimize -l1
+Executing Command
+
+vw-hypersearch -t train30.vw -L 1e-10 10 vw --loss_function logistic --link logistic  -b 24 -c train.vw --quiet --passes 1  -l 0.132217 --l2 1.3191e-10 --l1 % -f vwhyperlogi2
+Best Parameters found with vw-hypersearch
+---------------------------------------------------------------------------
+{'-l2': '1.3191e-10', '-l1': '1.04011e-10', 'l': 0.132217}
+
+Ready to Train Final Model vwlogi-cv30.vw
+---------------------------------------------------------------------------
+vw --loss_function logistic --link logistic  -b 24 -c trainfinal.vw --quiet --passes 3  --l2 1.3191e-10 --l1 1.04011e-10 -l 0.132217 -f vwlogi-cv30.vw
+
+Generating Predictions
+---------------------------------------------------------------------------
+vw test.vw -t -i vwlogi-cv30.vw -p vwpredlogi.dat
+
+Model Development Complete
+
+Final Trained Model with the Best Parameters at: vwlogi-cv30.vw
+Predictions on Test at: vwpredlogi.dat
+Individual Trained models for each iteration at vwhyperlogi1,2...
+

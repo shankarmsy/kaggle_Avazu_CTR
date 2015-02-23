@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#tune alpha
+#vw-hypersearch -t cv.vw -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl --ftrl_alpha % -b 24 -c train.vw -f vwhyptune1.vw --quiet
+
+#tune beta
+#vw-hypersearch -t cv.vw -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl --ftrl_beta % -b 24 -c train.vw -f vwhyptune2.vw --quiet
+
+#tune l1
+vw-hypersearch -t cv.vw -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl --ftrl_alpha 0.0734475 --ftrl_beta 0.118585 --l2 % -b 24 --passes 3 -c train.vw -f vwhyptune3.vw --quiet
+
+#tune l2
+vw-hypersearch -t cv.vw -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl --ftrl_alpha 0.0734475 --ftrl_beta 0.118585 --l2 5.31086 --l1 1.1531 -b 24 --passes 3 -c train.vw -f vwhyptune3.vw --quiet
+
+vw --loss_function logistic --link logistic --ftrl --ftrl_alpha 0.0734475 --ftrl_beta 0.118585 --l2 5.31086 --l1 1.1531 -b 24 --passes 3 -c trainfinal.vw -f vwtune1.vw --quiet
+

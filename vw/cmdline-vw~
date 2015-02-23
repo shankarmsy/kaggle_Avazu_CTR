@@ -1,0 +1,11 @@
+vw train.vw -f vwtune1.vw --loss_function logistic --link logistic --ftrl --ftrl_alpha .1 --ftrl_beta=1. --l1 1.1 --l2 1.1 -b 24 -c
+
+
+vw train.vw -f vwtune1.vw --loss_function logistic -link logistic -c
+vw test.vw -t -i vwtune1.vw -p vwpred1.txt
+
+vw-hypersearch -t cv.vw -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl --ftrl_alpha % --ftrl_beta % --l1 % --l2 % -b 24 -c train.vw -f vwtune1.vw --quiet
+
+cat train21.vw train22.vw train23.vw train24.vw train25.vw train26.vw train27.vw train28.vw >> train.vw
+
+cat train29.vw train30.vw >> cv.vw

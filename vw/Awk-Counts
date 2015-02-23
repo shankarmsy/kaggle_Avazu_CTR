@@ -1,0 +1,20 @@
+#!/bin/awk -f
+BEGIN {
+# How many clicks
+    clicks=0;
+    total=0;
+}
+{
+# this code is executed once for each line
+    if ($1 > 0 ) {
+    clicks++;
+    }
+    total++;
+}
+END {
+# end, now output the total
+    print FILENAME 
+    print "total clicks ", clicks;
+    print "total rows ", total;
+    print "click percent " (clicks/total)*100
+}

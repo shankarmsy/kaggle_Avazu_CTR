@@ -1,0 +1,22 @@
+CTR Prediction for Avazu
+
+Crossval on day 30, Train on rest
+---------------------------------------------------------------------------
+Best Parameters found with vw-hypersearch
+---------------------------------------------------------------------------
+{'-ftrl_beta': 0.118585, '-l2': 1.3191e-10, '-ftrl_alpha': 0.0734475, '-l1': 1.04011e-10}
+
+Ready to Train Final Model vwftrl-cv30.vw
+---------------------------------------------------------------------------
+vw --loss_function logistic --link logistic --ftrl -b 24 -c trainfinal.vw --quiet --passes 3  --ftrl_beta 0.118585 --l2 1.3191e-10 --ftrl_alpha 0.0734475 --l1 1.04011e-10 -f vwftrl-cv30.vw --holdout_period 100
+
+Generating Predictions
+---------------------------------------------------------------------------
+vw test.vw -t -i vwftrl-cv30.vw -p vwpredftrl.dat
+
+Model Development Complete
+
+Final Trained Model with the Best Parameters at: vwftrl-cv30.vw
+Predictions on Test at: vwpredftrl.dat
+Individual Trained models for each iteration at vwhyperftrl1,2...
+

@@ -1,0 +1,8 @@
+CTR Prediction for Avazu
+
+Crossval on day 30, Train on rest
+---------------------------------------------------------------------------
+Trying to optimize -ftrl_alpha
+Executing Command
+
+vw-hypersearch -t train30.vw -L -L 1e-10 10 vw --loss_function logistic --link logistic --ftrl -b 24 -c train.vw --quiet --passes 1  --ftrl_alpha % -f vwhyperftrl1

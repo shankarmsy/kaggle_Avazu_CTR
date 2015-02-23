@@ -1,0 +1,17 @@
+#!/bin/bash
+# for file in train2*.vw, train3*.vw, trainfinal.vw, test.vw
+# for file in train*.vw
+# do
+#     # awk -F '{print FILENAME}' $file
+#     awk '{print FILENAME, $20, ($1+1)/2}' $file | sort | uniq -c
+# done 
+
+for file in test.vw
+do
+    # awk -F '{print FILENAME}' $file
+    awk '{print FILENAME, $20, ($1+1)/2}' $file | sort | uniq -c
+done 
+
+#awk '{print $20}' test.vw | sort | uniq -c
+# awk -f Awk-Counts $file
+

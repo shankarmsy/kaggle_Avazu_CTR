@@ -1,0 +1,34 @@
+CTR Prediction for Avazu
+
+Crossval on day 30, Train on rest
+---------------------------------------------------------------------------
+Trying to optimize l
+Executing Command
+
+vw-hypersearch -t cv.vw -L -L 1e-10 20 vw --loss_function logistic --link logistic  -b 24 -c train.vw --quiet --passes 1  --nn 5 -l % -f vwhypernn1
+Trying to optimize -l2
+Executing Command
+
+vw-hypersearch -t cv.vw -L -L 1e-10 20 vw --loss_function logistic --link logistic  -b 24 -c train.vw --quiet --passes 1  --nn 5 -l 0.00323514 --l2 % -f vwhypernn2
+Trying to optimize -l1
+Executing Command
+
+vw-hypersearch -t cv.vw -L -L 1e-10 10 vw --loss_function logistic --link logistic  -b 24 -c train.vw --quiet --passes 1  --nn 5 -l 0.00323514 --l2 9.60956e-08 --l1 % -f vwhypernn3
+Best Parameters found with vw-hypersearch
+---------------------------------------------------------------------------
+{'-l2': '9.60956e-08', '-l1': '1.20387e-09', 'l': '0.00323514', '-nn': 5}
+
+Ready to Train Final Model vwnn-cv30.vw
+---------------------------------------------------------------------------
+vw --loss_function logistic --link logistic  -b 24 -c trainfinal.vw --quiet --passes 3  --l2 9.60956e-08 --l1 1.20387e-09 -l 0.00323514 --nn 5 -f vwnn-cv30.vw
+
+Generating Predictions
+---------------------------------------------------------------------------
+vw test.vw -t -i vwnn-cv30.vw -p vwprednn.dat
+
+Model Development Complete
+
+Final Trained Model with the Best Parameters at: vwnn-cv30.vw
+Predictions on Test at: vwprednn.dat
+Individual Trained models for each iteration at vwhypernn1,2...
+

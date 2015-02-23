@@ -1,0 +1,6 @@
+vw-hypersearch: you may get better results with -L (log-space search)
+		when any of --l1/hinge-loss/small-param-values are used
+trying 61.8033988750277 ................................................. 0.693147 (best)
+trying 38.1966011250723 ................................................. 0.693147 (best)
+vw-hypersearch: loss(61.8034) == loss(38.1966): 0.693147
+trying 50.00000000005 ........................
